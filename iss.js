@@ -17,9 +17,8 @@ const fetchCoordsByIP = function (ip,callback)
 {
   needle.get(`http://ipwho.is/${ip}`,(error,response,body) =>{
     
-    if(error) return callback(null,error);
+    if(error) return callback(error,null);
     
-
     if(!body.success) {
       const message = `Success status was ${body.success}. Sever message says: ${body.message} when fetching for IP ${body.ip}`;
       callback(message,null);
